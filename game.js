@@ -12,10 +12,11 @@ tokenGenerator = () => {
 
 function start(motion) {
   let userInput = "" 
-    while (userInput.toLowerCase() !== pull.toLowerCase()){
+    while (userInput.toLowerCase() !== "pull"){
     userInput = prompt('/nTo give the lever a pull, type "pull".')}
-    if userInput.toLowerCase() === pull.toLowerCase(){
-      console.log(`You have ${tokenGenerator()} tokens in your wallet!`)
+    if (userInput.toLowerCase() === "pull") {
+      wallet = tokenGenerator()
+      console.log(`You have ${wallet} tokens in your wallet!`)
       
     }
     
@@ -24,4 +25,5 @@ function start(motion) {
 
 
 console.log("I've always thought if one was going to gamble, then one should gamble at the most run down place one could since it would be apparent that that establishment wasn't making money but giving it all away. You must have thought the same thing and that's why you came here. Well, let's get to playing before this ship sinks.")
-console.log("There's a lever here that will fill up a wallet with a random amount tokens. You can then use the tokens to play the games here.")
+console.log("There's a lever here that will fill up a wallet with a random amount  of tokens. You can then use the tokens to play the games here.")
+start()
