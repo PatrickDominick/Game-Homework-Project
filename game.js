@@ -10,6 +10,33 @@ tokenGenerator = () => {
     return randoList;
 }
 
+weightedLottery = (list) => {
+    let total = 0;
+  
+    Object.keys(list).forEach(function(key) {
+      total += list[key];
+    });
+  
+    let selection = Math.random() * total;
+    let selected;
+    let count = 0;
+  
+    Object.keys(list).forEach(function(key) {
+      count += list[key];
+  
+      if (count > selection && !selected) {
+        selected = key;
+      }
+    });
+  
+      return selected;
+    }
+  
+  const weights = {
+    win: 1,
+    lose: 3,
+    }
+
 function start(motion) {
   let userInput = "" 
     while (userInput.toLowerCase() !== "pull"){
@@ -17,39 +44,24 @@ function start(motion) {
     if (userInput.toLowerCase() === "pull") {
       wallet = tokenGenerator()
       console.log(`You have ${wallet} tokens in your wallet!`)
-      
     }
-    
-  
 }
 
-coinFlip = (list) => {
-  let total = 0;
+// Insert token to play
+// Remove token from wallet
+// Token inserted automatically flips coin
+// write win condition with reward
+// write lose condition
+// prompt if want to play again or check out
 
-  Object.keys(list).forEach(function(key) {
-    total += list[key];
-  });
 
-  let selection = Math.random() * total;
-  let selected;
-  let count = 0;
 
-  Object.keys(list).forEach(function(key) {
-    count += list[key];
+function playGame(motion) {
+  let userInput = ""
+  while (userInput.toLowerCase() !== "flip"){
 
-    if (count > selection && !selected) {
-      selected = key;
-    }
-  });
-
-    return selected;
   }
-
-const weights = {
-  win: 1,
-  lose: 3,
-  
-  }
+}
 
 
 console.log("I've always thought if one was going to gamble, then one should gamble at the most run down place one could since it would be apparent that that establishment wasn't making money but giving it all away. You must have thought the same thing and that's why you came here. Well, let's get to playing before this ship sinks.")
