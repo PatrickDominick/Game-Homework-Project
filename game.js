@@ -39,29 +39,43 @@ weightedLottery = (list) => {
 
 function start(motion) {
   let userInput = "" 
+
     while (userInput.toLowerCase() !== "pull"){
-    userInput = prompt('/nTo give the lever a pull, type "pull".')}
+    userInput = prompt('To give the lever a pull, type "pull".')}
     if (userInput.toLowerCase() === "pull") {
       wallet = tokenGenerator()
       console.log(`You have ${wallet} tokens in your wallet!`)
     }
-}
+    
+    while (userInput.toLowerCase() !== "insert"){
+      userInput = prompt("The game is easy! It's called Flip. We flip a coin and you call heads or tails. If you win you get some tokens. If you lose you can insert a token to try again. Now we need a coin to flip because we're flat broke. To play insert a token by typing 'insert'")}
+      if (userInput.toLowerCase() === "insert") {
+        console.log(`You now have ${wallet - 1} tokens in your wallet.`)
+        }
 
-// Insert token to play
-// Remove token from wallet
-// Token inserted automatically flips coin
+    while (userInput.toLowerCase() !== "heads" || "tails") {
+      userInput = prompt("Alright, now call heads or tails by typing your choice.")}
+        if (userInput.toLowerCase() === "heads" || "tails") {
+          console.log(weightedLottery(weights))
+        }
+      }
+    
+    
+
+
+
+
+
+
+
+
 // write win condition with reward
 // write lose condition
 // prompt if want to play again or check out
 
 
 
-function playGame(motion) {
-  let userInput = ""
-  while (userInput.toLowerCase() !== "flip"){
 
-  }
-}
 
 
 console.log("I've always thought if one was going to gamble, then one should gamble at the most run down place one could since it would be apparent that that establishment wasn't making money but giving it all away. You must have thought the same thing and that's why you came here. Well, let's get to playing before this ship sinks.")
