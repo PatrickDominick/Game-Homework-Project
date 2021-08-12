@@ -1,4 +1,6 @@
 let wallet = 0
+let winnings = 0
+let token = 1
 
 tokenGenerator = () => {
   let hex = `0123456789`
@@ -34,32 +36,70 @@ weightedLottery = (list) => {
   
   const weights = {
     win: 1,
-    lose: 3,
+    lose: 0,
     }
+  const coinFlip = weightedLottery(weights)
 
-function start(motion) {
+
+
+function start() {
   let userInput = "" 
 
     while (userInput.toLowerCase() !== "pull"){
     userInput = prompt('To give the lever a pull, type "pull".')}
     if (userInput.toLowerCase() === "pull") {
       wallet = tokenGenerator()
-      console.log(`You have ${wallet} tokens in your wallet!`)
+      console.log(`You have ${parseInt(wallet)} tokens in your wallet!`)
     }
     
     while (userInput.toLowerCase() !== "insert"){
       userInput = prompt("The game is easy! It's called Flip. We flip a coin and you call heads or tails. If you win you get some tokens. If you lose you can insert a token to try again. Now we need a coin to flip because we're flat broke. To play insert a token by typing 'insert'")}
       if (userInput.toLowerCase() === "insert") {
-        console.log(`You now have ${wallet - 1} tokens in your wallet.`)
+        console.log(`You now have ${wallet -= token} tokens in your wallet.`)
         }
 
-    while (userInput.toLowerCase() !== "heads" || "tails") {
-      userInput = prompt("Alright, now call heads or tails by typing your choice.")}
-        if (userInput.toLowerCase() === "heads" || "tails") {
-          console.log(weightedLottery(weights))
+    while (userInput.toLowerCase() !== "heads" && userInput.toLowerCase() !== "tails") {
+      userInput = prompt("Alright, now call heads or tails by typing your choice.")
+      
+        if (userInput.toLowerCase() === "heads" || userInput.toLowerCase() === "tails") {
+          console.log(coinFlip)
         }
       }
+
+    if (coinFlip === "win"){
+      winnings += 2
+      console.log(`Congratulations! Here's 2 more tokens as your prize!`)
+      console.log(`You now have ${wallet += winnings} tokens in your wallet.`)
+    }
+    else if (coinFlip === "lose") {
+      console.log("Ooh, tough break. Try again if you have the tokens!")
+    }
+
+  }
     
+  // function game () {
+  //   while (userInput.toLowerCase() !== "insert"){
+  //     userInput = prompt("The game is easy! It's called Flip. We flip a coin and you call heads or tails. If you win you get some tokens. If you lose you can insert a token to try again. Now we need a coin to flip because we're flat broke. To play insert a token by typing 'insert'")}
+  //     if (userInput.toLowerCase() === "insert") {
+  //       console.log(`You now have ${wallet - 1} tokens in your wallet.`)
+  //       }
+
+  //   while (userInput.toLowerCase() !== "heads" && userInput.toLowerCase() !== "tails") {
+  //     userInput = prompt("Alright, now call heads or tails by typing your choice.")
+      
+  //       if (userInput.toLowerCase() === "heads" || userInput.toLowerCase() === "tails") {
+  //         console.log(coinFlip)
+  //       }
+  //     }
+
+  //   if (coinFlip === "win"){
+  //     console.log(`Congratulations! Here's 2 more tokens as your prize!`)
+  //     console.log(`You now have ${wallet + 2} tokens in your wallet.`)
+  //   }
+  //   else if (coinFlip === "lose") {
+  //     console.log("Ooh, tough break. Try again if you have the tokens!")
+  //   }
+  // }
     
 
 
@@ -69,9 +109,9 @@ function start(motion) {
 
 
 
-// write win condition with reward
-// write lose condition
-// prompt if want to play again or check out
+
+// prompt if want to play again
+//check if wallet is empty
 
 
 
