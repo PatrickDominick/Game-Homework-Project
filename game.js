@@ -34,11 +34,17 @@ weightedLottery = (list) => {
       return selected;
     }
   
-  const weights = {
+  const win = {
     win: 1,
     lose: 0,
     }
-  const coinFlip = weightedLottery(weights)
+
+  const betOnTheHouse = {
+    win: 1,
+    lose: 3,
+  }
+  const getHooked = weightedLottery(win)
+  const moneyBack = weightedLottery(betOnTheHouse)
 
 
 
@@ -62,62 +68,70 @@ function start() {
       userInput = prompt("Alright, now call heads or tails by typing your choice.")
       
         if (userInput.toLowerCase() === "heads" || userInput.toLowerCase() === "tails") {
-          console.log(coinFlip)
+          console.log(getHooked)
+        }
+        while (userInput.toLowerCase() !== "insert"){
+      userInput = prompt("To play insert a token by typing 'insert'")}
+      if (userInput.toLowerCase() === "insert") {
+        console.log(`You now have ${wallet -= token} tokens in your wallet.`)
+        }
+
+    while (userInput.toLowerCase() !== "heads" && userInput.toLowerCase() !== "tails") {
+      userInput = prompt("Alright, now call heads or tails by typing your choice.")
+      
+        if (userInput.toLowerCase() === "heads" || userInput.toLowerCase() === "tails") {
+          console.log(getHooked)
         }
       }
 
-    if (coinFlip === "win"){
+    if (getHooked === "win"){
       winnings += 2
       console.log(`Congratulations! Here's 2 more tokens as your prize!`)
       console.log(`You now have ${wallet += winnings} tokens in your wallet.`)
     }
-    else if (coinFlip === "lose") {
+    else if (getHooked === "lose") {
       console.log("Ooh, tough break. Try again if you have the tokens!")
     }
 
   }
     
-  // function game () {
-  //   while (userInput.toLowerCase() !== "insert"){
-  //     userInput = prompt("The game is easy! It's called Flip. We flip a coin and you call heads or tails. If you win you get some tokens. If you lose you can insert a token to try again. Now we need a coin to flip because we're flat broke. To play insert a token by typing 'insert'")}
-  //     if (userInput.toLowerCase() === "insert") {
-  //       console.log(`You now have ${wallet - 1} tokens in your wallet.`)
-  //       }
+  function game() {
+      let userInput = ""
+      while (userInput.toLowerCase() !== "insert"){
+      userInput = prompt("To play insert a token by typing 'insert'")}
+      if (userInput.toLowerCase() === "insert") {
+        console.log(`You now have ${wallet -= token} tokens in your wallet.`)
+        }
 
-  //   while (userInput.toLowerCase() !== "heads" && userInput.toLowerCase() !== "tails") {
-  //     userInput = prompt("Alright, now call heads or tails by typing your choice.")
+    while (userInput.toLowerCase() !== "heads" && userInput.toLowerCase() !== "tails") {
+      userInput = prompt("Alright, now call heads or tails by typing your choice.")
       
-  //       if (userInput.toLowerCase() === "heads" || userInput.toLowerCase() === "tails") {
-  //         console.log(coinFlip)
-  //       }
-  //     }
+        if (userInput.toLowerCase() === "heads" || userInput.toLowerCase() === "tails") {
+          console.log(moneyBack)
+        }
+      }
 
-  //   if (coinFlip === "win"){
-  //     console.log(`Congratulations! Here's 2 more tokens as your prize!`)
-  //     console.log(`You now have ${wallet + 2} tokens in your wallet.`)
-  //   }
-  //   else if (coinFlip === "lose") {
-  //     console.log("Ooh, tough break. Try again if you have the tokens!")
-  //   }
-  // }
+    if (moneyBack === "win"){
+      winnings += 2
+      console.log(`Congratulations! Here's 2 more tokens as your prize!`)
+      console.log(`You now have ${wallet += winnings} tokens in your wallet.`)
+    }
+    else if (moneyBack === "lose") {
+      console.log("Ooh, tough break. Try again if you have the tokens!")
+    }
+  }
     
-
-
-
-
-
-
-
-
-
-// prompt if want to play again
-//check if wallet is empty
-
-
-
-
+  function gameLoop () {
+    if (wallet > 0) {
+      game()
+    }
+    else {
+      console.log("Well it looks like we'll be open another day thanks to you! Have a good night and try again tomorrow!")
+    }
+  }
 
 
 console.log("I've always thought if one was going to gamble, then one should gamble at the most run down place one could since it would be apparent that that establishment wasn't making money but giving it all away. You must have thought the same thing and that's why you came here. Well, let's get to playing before this ship sinks.")
 console.log("There's a lever here that will fill up a wallet with a random amount  of tokens. You can then use the tokens to play the games here.")
 start()
+gameLoop()
